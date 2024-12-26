@@ -1,0 +1,35 @@
+﻿<Window x:Class="task1.pages.Analizator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:task1.pages"
+        mc:Ignorable="d"
+        Title="Analizator" Height="452" Width="1020"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F0F0">
+    <Grid Margin="10">
+        <!-- Список услуг -->
+        <ListBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" Name="listServices" Height="290" Margin="10,10,200,146" BorderThickness="1" BorderBrush="#CCCCCC"/>
+
+        <!-- Заголовок и ComboBox -->
+        <Label FontFamily="Segoe UI" FontSize="14" Content="Заказы" Margin="810,10,200,392"/>
+        <ComboBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" Name="cb1" Margin="800,44,200,341" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+
+        <!-- Кнопки -->
+        <Button FontFamily="Segoe UI" FontSize="14" Background="#4CAF50" Foreground="White" x:Name="button4" Click="button4_Click" Content="Отправить на анализатор" Margin="800,100,200,272" Width="200" Height="30" BorderThickness="0"/>
+        <Button FontFamily="Segoe UI" FontSize="14" Background="#4CAF50" Foreground="White" x:Name="button3" Click="button3_Click" Content="Проверить" Margin="800,169,200,210" Width="200" Height="30" BorderThickness="0"/>
+        <Button FontFamily="Segoe UI" FontSize="14" Background="#4CAF50" Foreground="White" x:Name="button5" Click="button5_Click" Content="Одобрить" Margin="800,231,200,146" Width="200" Height="30" BorderThickness="0"/>
+        <Button FontFamily="Segoe UI" FontSize="14" Background="#F44336" Foreground="White" x:Name="button6" Click="button6_Click" Content="Отклонить" Margin="10,295,800,82" Width="200" Height="30" BorderThickness="0"/>
+        <Button FontFamily="Segoe UI" FontSize="14" Background="#FF5722" Foreground="White" Content="Назад" Margin="10,364,800,9" Width="200" Height="30" BorderThickness="0"/>
+
+        <!-- RadioButton -->
+        <StackPanel Orientation="Vertical" Margin="200,372,800,0" VerticalAlignment="Top">
+            <RadioButton FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" Name="rb1" Content="Ledetect" Margin="0,0,0,5" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC" IsChecked="True"/>
+            <RadioButton FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" Name="rb2" Content="Biorad" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+        </StackPanel>
+
+        <!-- Логотип -->
+        <Image Source="User_Photos/logo.png" Width="83" Height="74" Margin="912,315,6,27"/>
+    </Grid>
+</Window>

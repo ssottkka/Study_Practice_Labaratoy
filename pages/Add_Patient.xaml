@@ -1,0 +1,96 @@
+﻿<Window x:Class="task1.pages.Add_Patient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:task1.pages"
+        mc:Ignorable="d"
+        Title="Add_Patient" Height="499" Width="812"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F0F0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Кнопки в верхнем правом углу -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,10,0">
+            <Button FontFamily="Segoe UI" FontSize="14" Background="#4CAF50" Foreground="White" Content="Сохранить" Click="SaveButton_Click" Margin="0,0,5,0" Width="100" Height="30" BorderThickness="0"/>
+            <Button FontFamily="Segoe UI" FontSize="14" Background="#FF5722" Foreground="White" Content="Отмена" Click="CancelButton_Click" Width="98" Height="30" BorderThickness="0"/>
+            <Button FontFamily="Segoe UI" FontSize="14" Background="#F44336" Foreground="White" Content="Выйти" Click="Exit_Click" Width="100" Height="30" BorderThickness="0"/>
+        </StackPanel>
+
+        <!-- Основные поля ввода -->
+        <StackPanel Grid.Row="1" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Фамилия:</TextBlock>
+                <TextBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="Surname" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Имя:</TextBlock>
+                <TextBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="Name" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Отчество:</TextBlock>
+                <TextBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="Lastname" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Дата рождения:</TextBlock>
+                <DatePicker FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="BirthDatePicker" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Серия паспорта:</TextBlock>
+                <TextBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="PassportSeries" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Номер паспорта:</TextBlock>
+                <TextBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="PassportNumber" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Номер телефона:</TextBlock>
+                <TextBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="PhoneNumber" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Номер страхового полиса:</TextBlock>
+                <TextBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="Polis" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Электронная почта:</TextBlock>
+                <TextBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="Email" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Логин:</TextBlock>
+                <TextBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="Login" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Пароль:</TextBlock>
+                <PasswordBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="Password" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Тип страхового полиса:</TextBlock>
+                <ComboBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="PolisType" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe UI" FontSize="14" Width="150" Margin="0,5">Название страховой компании:</TextBlock>
+                <ComboBox FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="CompanyName" Width="250" Margin="5,0" Padding="5" BorderThickness="1" BorderBrush="#CCCCCC"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Логотип -->
+        <Image Source="User_Photos/logo.png" Width="90" Height="90" Margin="722,314,0,10" Grid.Row="1" />
+    </Grid>
+</Window>

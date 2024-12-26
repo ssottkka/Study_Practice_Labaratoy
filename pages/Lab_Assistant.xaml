@@ -1,0 +1,45 @@
+﻿<Window x:Class="task1.pages.Lab_Assistant"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:task1.pages"
+        mc:Ignorable="d"
+        Title="Lab_Assistant" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F0F0">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Логотип -->
+        <Image Source="/pages/User_Photos/logo.png" Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Grid.Column="1" />
+
+        <!-- Левая панель с изображением и кнопкой "Выйти" -->
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10">
+            <Image Source="User_Photos/laborant_2.png" Width="165" Height="100" Stretch="UniformToFill"/>
+            <Button FontFamily="Segoe UI" FontSize="14" Background="#F44336" Foreground="White" Content="Выйти" Click="Button_Click" Margin="0,10,0,0" Width="100" Height="30" BorderThickness="0"/>
+        </StackPanel>
+
+        <!-- Информация о лаборанте -->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="10">
+            <Label FontFamily="Segoe UI" FontSize="14" Content="Имя пользователя:" FontWeight="Bold"/>
+            <Label FontFamily="Segoe UI" FontSize="14" x:Name="labAssisFIO" Content=""/>
+            <Label FontFamily="Segoe UI" FontSize="14" Content="Должность:" FontWeight="Bold"/>
+            <Label FontFamily="Segoe UI" FontSize="14" x:Name="labAssisType" Content=""/>
+            <Label FontFamily="Segoe UI" FontSize="24" x:Name="lblTime" HorizontalAlignment="Left" Width="136" Height="28" />
+            <TextBlock FontFamily="Segoe UI" FontSize="24" x:Name="TimerTextBlock" VerticalAlignment="Top" Width="171" Height="72" />
+        </StackPanel>
+
+        <!-- Правая панель с кнопкой "Анализатор" -->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin="10">
+            <Button FontFamily="Segoe UI" FontSize="14" Background="#4CAF50" Foreground="White" x:Name="analizator" Content="Анализатор" Width="150" Height="40" Click="analizator_Click" BorderThickness="0"/>
+        </StackPanel>
+    </Grid>
+</Window>

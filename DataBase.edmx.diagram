@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="913056da5c3e439fae3a1868baf5e8e0" Name="Diagram1">
+        <EntityTypeShape EntityType="bazdanModel.Администратор" Width="1.5" PointX="7.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Биоматериалы" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Данные_пациентов" Width="1.5" PointX="8" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Заказ" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.История" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Приборы" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Работа_анализатора" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Роль_пользователя" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Состояние_услуги" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Сотрудники" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Статус_Заказа" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Статус_Услуги" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Страховые_компании" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Тип_полиса" Width="1.5" PointX="5.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bazdanModel.Услуги_Пользователя" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="bazdanModel.FK_Заказ_Biomaterials" ManuallyRouted="false" />
+        <AssociationConnector Association="bazdanModel.FK_Данные_пациентов_TypePolis" ManuallyRouted="false" />
+        <AssociationConnector Association="bazdanModel.FK_Данные_пациентов_Данные_о_страховых_компаниях" ManuallyRouted="false" />
+        <AssociationConnector Association="bazdanModel.FK_StatusServices_Заказ" ManuallyRouted="false" />
+        <AssociationConnector Association="bazdanModel.FK_Заказ_Статус_Заказа" ManuallyRouted="false" />
+        <AssociationConnector Association="bazdanModel.FK_users_Тип_пользователя" ManuallyRouted="false" />
+        <AssociationConnector Association="bazdanModel.FK_StatusServices_Статус_Услуги" ManuallyRouted="false" />
+        <AssociationConnector Association="bazdanModel.FK_Услуги_Пользова_users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="bazdanModel.Услуги" Width="1.5" PointX="3" PointY="2.25" />
+        <AssociationConnector Association="bazdanModel.FK_services_Приборы" />
+        <AssociationConnector Association="bazdanModel.FK_StatusServices_services" />
+        <AssociationConnector Association="bazdanModel.FK_Услуги_Пользова_services" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

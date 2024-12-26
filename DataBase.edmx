@@ -1,0 +1,932 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище bazdanModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Администратор">
+          <Key>
+            <PropertyRef Name="Код_администратора" />
+          </Key>
+          <Property Name="Код_администратора" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Логин" Type="nvarchar" MaxLength="50" />
+          <Property Name="Пароль" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Биоматериалы">
+          <Key>
+            <PropertyRef Name="Код_биоматериала" />
+          </Key>
+          <Property Name="Код_биоматериала" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Номер_биоматериала" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Данные_пациентов">
+          <Key>
+            <PropertyRef Name="Код_пациента" />
+          </Key>
+          <Property Name="Код_пациента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ФИО_пациента" Type="nvarchar" MaxLength="150" />
+          <Property Name="Дата_рождения" Type="date" />
+          <Property Name="Серия_паспорта" Type="nvarchar" MaxLength="4" />
+          <Property Name="Номер_паспорта" Type="nvarchar" MaxLength="6" />
+          <Property Name="Номер_телефона" Type="nvarchar" MaxLength="50" />
+          <Property Name="Номер_полиса" Type="nvarchar" MaxLength="16" />
+          <Property Name="Тип_полиса" Type="int" />
+          <Property Name="Страховая_компания" Type="int" />
+          <Property Name="Электронная_почта" Type="nvarchar" MaxLength="50" />
+          <Property Name="Логин" Type="nvarchar" MaxLength="50" />
+          <Property Name="Пароль" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Заказ">
+          <Key>
+            <PropertyRef Name="Код_заказа" />
+          </Key>
+          <Property Name="Код_заказа" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Дата_создания" Type="date" />
+          <Property Name="Статус_заказа" Type="int" />
+          <Property Name="Время_выполнения_заказа" Type="nvarchar" MaxLength="50" />
+          <Property Name="Код_биоматериала" Type="int" />
+          <Property Name="Код_пациента" Type="int" />
+          <Property Name="result" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="История">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nchar" MaxLength="10" />
+          <Property Name="date" Type="nchar" MaxLength="10" />
+          <Property Name="enter_status" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Приборы">
+          <Key>
+            <PropertyRef Name="Код_прибора" />
+          </Key>
+          <Property Name="Код_прибора" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование_прибора" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Работа_анализатора">
+          <Key>
+            <PropertyRef Name="Код_работы_анализатора" />
+          </Key>
+          <Property Name="Код_работы_анализатора" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Дата_поступления" Type="date" />
+          <Property Name="Дата_выполнения" Type="date" />
+          <Property Name="Время_выполнения" Type="int" />
+        </EntityType>
+        <EntityType Name="Роль_пользователя">
+          <Key>
+            <PropertyRef Name="Код_роли" />
+          </Key>
+          <Property Name="Код_роли" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование_роли" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Состояние_услуги">
+          <Key>
+            <PropertyRef Name="Код_состояния_услуги" />
+          </Key>
+          <Property Name="Код_состояния_услуги" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Код_заказа" Type="int" />
+          <Property Name="Код_услуги" Type="int" />
+          <Property Name="Статус" Type="int" />
+          <Property Name="Результат" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Сотрудники">
+          <Key>
+            <PropertyRef Name="Код_сотрудника" />
+          </Key>
+          <Property Name="Код_сотрудника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ФИО_сотрудника" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Номер" Type="nvarchar" MaxLength="50" />
+          <Property Name="Логин" Type="nvarchar" MaxLength="255" />
+          <Property Name="Пароль" Type="nvarchar" MaxLength="255" />
+          <Property Name="ip" Type="nvarchar" MaxLength="255" />
+          <Property Name="Последний_вход" Type="datetime" />
+          <Property Name="Услуги_сотрудника" Type="int" />
+          <Property Name="Роль_сотрудника" Type="int" />
+          <Property Name="Вход" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Статус_Заказа">
+          <Key>
+            <PropertyRef Name="Код_статуса_заказа" />
+          </Key>
+          <Property Name="Код_статуса_заказа" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование_статуса_заказа" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Статус_Услуги">
+          <Key>
+            <PropertyRef Name="Код_статуса_услуги" />
+          </Key>
+          <Property Name="Код_статуса_услуги" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование_статуса_услуги" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Страховые_компании">
+          <Key>
+            <PropertyRef Name="Код_компании" />
+          </Key>
+          <Property Name="Код_компании" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название_компании" Type="nvarchar" MaxLength="50" />
+          <Property Name="Адрес" Type="nvarchar" MaxLength="50" />
+          <Property Name="ИНН" Type="nvarchar" MaxLength="10" />
+          <Property Name="Расчетный_счет" Type="nvarchar" MaxLength="50" />
+          <Property Name="БИК" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Тип_полиса">
+          <Key>
+            <PropertyRef Name="Код_полиса" />
+          </Key>
+          <Property Name="Код_полиса" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Наименование" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Услуги">
+          <Key>
+            <PropertyRef Name="Код_услуги" />
+          </Key>
+          <Property Name="Код_услуги" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Номер_услуги" Type="int" />
+          <Property Name="Наименование_услуги" Type="nvarchar" MaxLength="255" />
+          <Property Name="Стоимость_услуги" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Время_выполнения" Type="int" />
+          <Property Name="Среднее_отклонение" Type="int" />
+          <Property Name="Анализатор" Type="int" />
+          <Property Name="result" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Услуги_Пользователя">
+          <Key>
+            <PropertyRef Name="Код_услуг_сотрудника" />
+          </Key>
+          <Property Name="Код_услуг_сотрудника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Код_сотрудника" Type="int" />
+          <Property Name="Код_услуги" Type="int" />
+        </EntityType>
+        <Association Name="FK_services_Приборы">
+          <End Role="Приборы" Type="Self.Приборы" Multiplicity="0..1" />
+          <End Role="Услуги" Type="Self.Услуги" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Приборы">
+              <PropertyRef Name="Код_прибора" />
+            </Principal>
+            <Dependent Role="Услуги">
+              <PropertyRef Name="Анализатор" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusServices_services">
+          <End Role="Услуги" Type="Self.Услуги" Multiplicity="0..1" />
+          <End Role="Состояние_услуги" Type="Self.Состояние_услуги" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Услуги">
+              <PropertyRef Name="Код_услуги" />
+            </Principal>
+            <Dependent Role="Состояние_услуги">
+              <PropertyRef Name="Код_услуги" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusServices_Заказ">
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="0..1" />
+          <End Role="Состояние_услуги" Type="Self.Состояние_услуги" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Заказ">
+              <PropertyRef Name="Код_заказа" />
+            </Principal>
+            <Dependent Role="Состояние_услуги">
+              <PropertyRef Name="Код_заказа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusServices_Статус_Услуги">
+          <End Role="Статус_Услуги" Type="Self.Статус_Услуги" Multiplicity="0..1" />
+          <End Role="Состояние_услуги" Type="Self.Состояние_услуги" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Статус_Услуги">
+              <PropertyRef Name="Код_статуса_услуги" />
+            </Principal>
+            <Dependent Role="Состояние_услуги">
+              <PropertyRef Name="Статус" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_Тип_пользователя">
+          <End Role="Роль_пользователя" Type="Self.Роль_пользователя" Multiplicity="0..1" />
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Роль_пользователя">
+              <PropertyRef Name="Код_роли" />
+            </Principal>
+            <Dependent Role="Сотрудники">
+              <PropertyRef Name="Роль_сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Данные_пациентов_TypePolis">
+          <End Role="Тип_полиса" Type="Self.Тип_полиса" Multiplicity="0..1" />
+          <End Role="Данные_пациентов" Type="Self.Данные_пациентов" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тип_полиса">
+              <PropertyRef Name="Код_полиса" />
+            </Principal>
+            <Dependent Role="Данные_пациентов">
+              <PropertyRef Name="Тип_полиса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Данные_пациентов_Данные_о_страховых_компаниях">
+          <End Role="Страховые_компании" Type="Self.Страховые_компании" Multiplicity="0..1" />
+          <End Role="Данные_пациентов" Type="Self.Данные_пациентов" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Страховые_компании">
+              <PropertyRef Name="Код_компании" />
+            </Principal>
+            <Dependent Role="Данные_пациентов">
+              <PropertyRef Name="Страховая_компания" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заказ_Biomaterials">
+          <End Role="Биоматериалы" Type="Self.Биоматериалы" Multiplicity="0..1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Биоматериалы">
+              <PropertyRef Name="Код_биоматериала" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="Код_биоматериала" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заказ_Статус_Заказа">
+          <End Role="Статус_Заказа" Type="Self.Статус_Заказа" Multiplicity="0..1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Статус_Заказа">
+              <PropertyRef Name="Код_статуса_заказа" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="Статус_заказа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Услуги_Пользова_services">
+          <End Role="Услуги" Type="Self.Услуги" Multiplicity="0..1" />
+          <End Role="Услуги_Пользователя" Type="Self.Услуги_Пользователя" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Услуги">
+              <PropertyRef Name="Код_услуги" />
+            </Principal>
+            <Dependent Role="Услуги_Пользователя">
+              <PropertyRef Name="Код_услуги" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Услуги_Пользова_users">
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="0..1" />
+          <End Role="Услуги_Пользователя" Type="Self.Услуги_Пользователя" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудники">
+              <PropertyRef Name="Код_сотрудника" />
+            </Principal>
+            <Dependent Role="Услуги_Пользователя">
+              <PropertyRef Name="Код_сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище bazdanModelContainer">
+          <EntitySet Name="Администратор" EntityType="Self.Администратор" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Биоматериалы" EntityType="Self.Биоматериалы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Данные_пациентов" EntityType="Self.Данные_пациентов" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Заказ" EntityType="Self.Заказ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="История" EntityType="Self.История" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Приборы" EntityType="Self.Приборы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Работа_анализатора" EntityType="Self.Работа_анализатора" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Роль_пользователя" EntityType="Self.Роль_пользователя" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Состояние_услуги" EntityType="Self.Состояние_услуги" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Сотрудники" EntityType="Self.Сотрудники" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Статус_Заказа" EntityType="Self.Статус_Заказа" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Статус_Услуги" EntityType="Self.Статус_Услуги" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Страховые_компании" EntityType="Self.Страховые_компании" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Тип_полиса" EntityType="Self.Тип_полиса" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Услуги" EntityType="Self.Услуги" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Услуги_Пользователя" EntityType="Self.Услуги_Пользователя" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_services_Приборы" Association="Self.FK_services_Приборы">
+            <End Role="Приборы" EntitySet="Приборы" />
+            <End Role="Услуги" EntitySet="Услуги" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusServices_services" Association="Self.FK_StatusServices_services">
+            <End Role="Услуги" EntitySet="Услуги" />
+            <End Role="Состояние_услуги" EntitySet="Состояние_услуги" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusServices_Заказ" Association="Self.FK_StatusServices_Заказ">
+            <End Role="Заказ" EntitySet="Заказ" />
+            <End Role="Состояние_услуги" EntitySet="Состояние_услуги" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusServices_Статус_Услуги" Association="Self.FK_StatusServices_Статус_Услуги">
+            <End Role="Статус_Услуги" EntitySet="Статус_Услуги" />
+            <End Role="Состояние_услуги" EntitySet="Состояние_услуги" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_Тип_пользователя" Association="Self.FK_users_Тип_пользователя">
+            <End Role="Роль_пользователя" EntitySet="Роль_пользователя" />
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Данные_пациентов_TypePolis" Association="Self.FK_Данные_пациентов_TypePolis">
+            <End Role="Тип_полиса" EntitySet="Тип_полиса" />
+            <End Role="Данные_пациентов" EntitySet="Данные_пациентов" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Данные_пациентов_Данные_о_страховых_компаниях" Association="Self.FK_Данные_пациентов_Данные_о_страховых_компаниях">
+            <End Role="Страховые_компании" EntitySet="Страховые_компании" />
+            <End Role="Данные_пациентов" EntitySet="Данные_пациентов" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заказ_Biomaterials" Association="Self.FK_Заказ_Biomaterials">
+            <End Role="Биоматериалы" EntitySet="Биоматериалы" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заказ_Статус_Заказа" Association="Self.FK_Заказ_Статус_Заказа">
+            <End Role="Статус_Заказа" EntitySet="Статус_Заказа" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Услуги_Пользова_services" Association="Self.FK_Услуги_Пользова_services">
+            <End Role="Услуги" EntitySet="Услуги" />
+            <End Role="Услуги_Пользователя" EntitySet="Услуги_Пользователя" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Услуги_Пользова_users" Association="Self.FK_Услуги_Пользова_users">
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+            <End Role="Услуги_Пользователя" EntitySet="Услуги_Пользователя" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bazdanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Администратор">
+          <Key>
+            <PropertyRef Name="Код_администратора" />
+          </Key>
+          <Property Name="Код_администратора" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Логин" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Пароль" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Биоматериалы">
+          <Key>
+            <PropertyRef Name="Код_биоматериала" />
+          </Key>
+          <Property Name="Код_биоматериала" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Номер_биоматериала" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Заказ" Relationship="Self.FK_Заказ_Biomaterials" FromRole="Биоматериалы" ToRole="Заказ" />
+        </EntityType>
+        <EntityType Name="Данные_пациентов">
+          <Key>
+            <PropertyRef Name="Код_пациента" />
+          </Key>
+          <Property Name="Код_пациента" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ФИО_пациента" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
+          <Property Name="Серия_паспорта" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_паспорта" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_телефона" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_полиса" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Тип_полиса" Type="Int32" />
+          <Property Name="Страховая_компания" Type="Int32" />
+          <Property Name="Электронная_почта" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Логин" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Пароль" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Тип_полиса1" Relationship="Self.FK_Данные_пациентов_TypePolis" FromRole="Данные_пациентов" ToRole="Тип_полиса" />
+          <NavigationProperty Name="Страховые_компании" Relationship="Self.FK_Данные_пациентов_Данные_о_страховых_компаниях" FromRole="Данные_пациентов" ToRole="Страховые_компании" />
+        </EntityType>
+        <EntityType Name="Заказ">
+          <Key>
+            <PropertyRef Name="Код_заказа" />
+          </Key>
+          <Property Name="Код_заказа" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Дата_создания" Type="DateTime" Precision="0" />
+          <Property Name="Статус_заказа" Type="Int32" />
+          <Property Name="Время_выполнения_заказа" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Код_биоматериала" Type="Int32" />
+          <Property Name="Код_пациента" Type="Int32" />
+          <Property Name="result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Биоматериалы" Relationship="Self.FK_Заказ_Biomaterials" FromRole="Заказ" ToRole="Биоматериалы" />
+          <NavigationProperty Name="Состояние_услуги" Relationship="Self.FK_StatusServices_Заказ" FromRole="Заказ" ToRole="Состояние_услуги" />
+          <NavigationProperty Name="Статус_Заказа1" Relationship="Self.FK_Заказ_Статус_Заказа" FromRole="Заказ" ToRole="Статус_Заказа" />
+        </EntityType>
+        <EntityType Name="История">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="enter_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Приборы">
+          <Key>
+            <PropertyRef Name="Код_прибора" />
+          </Key>
+          <Property Name="Код_прибора" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование_прибора" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Услуги" Relationship="bazdanModel.FK_services_Приборы" FromRole="Приборы" ToRole="Услуги" />
+        </EntityType>
+        <EntityType Name="Работа_анализатора">
+          <Key>
+            <PropertyRef Name="Код_работы_анализатора" />
+          </Key>
+          <Property Name="Код_работы_анализатора" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Дата_поступления" Type="DateTime" Precision="0" />
+          <Property Name="Дата_выполнения" Type="DateTime" Precision="0" />
+          <Property Name="Время_выполнения" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Роль_пользователя">
+          <Key>
+            <PropertyRef Name="Код_роли" />
+          </Key>
+          <Property Name="Код_роли" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование_роли" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Сотрудники" Relationship="Self.FK_users_Тип_пользователя" FromRole="Роль_пользователя" ToRole="Сотрудники" />
+        </EntityType>
+        <EntityType Name="Состояние_услуги">
+          <Key>
+            <PropertyRef Name="Код_состояния_услуги" />
+          </Key>
+          <Property Name="Код_состояния_услуги" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Код_заказа" Type="Int32" />
+          <Property Name="Код_услуги" Type="Int32" />
+          <Property Name="Статус" Type="Int32" />
+          <Property Name="Результат" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Заказ" Relationship="Self.FK_StatusServices_Заказ" FromRole="Состояние_услуги" ToRole="Заказ" />
+          <NavigationProperty Name="Статус_Услуги" Relationship="Self.FK_StatusServices_Статус_Услуги" FromRole="Состояние_услуги" ToRole="Статус_Услуги" />
+          <NavigationProperty Name="Услуги" Relationship="bazdanModel.FK_StatusServices_services" FromRole="Состояние_услуги" ToRole="Услуги" />
+        </EntityType>
+        <EntityType Name="Сотрудники">
+          <Key>
+            <PropertyRef Name="Код_сотрудника" />
+          </Key>
+          <Property Name="Код_сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ФИО_сотрудника" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Номер" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Логин" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Пароль" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Последний_вход" Type="DateTime" Precision="3" />
+          <Property Name="Услуги_сотрудника" Type="Int32" />
+          <Property Name="Роль_сотрудника" Type="Int32" />
+          <Property Name="Вход" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Роль_пользователя" Relationship="Self.FK_users_Тип_пользователя" FromRole="Сотрудники" ToRole="Роль_пользователя" />
+          <NavigationProperty Name="Услуги_Пользователя" Relationship="Self.FK_Услуги_Пользова_users" FromRole="Сотрудники" ToRole="Услуги_Пользователя" />
+        </EntityType>
+        <EntityType Name="Статус_Заказа">
+          <Key>
+            <PropertyRef Name="Код_статуса_заказа" />
+          </Key>
+          <Property Name="Код_статуса_заказа" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование_статуса_заказа" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Заказ" Relationship="Self.FK_Заказ_Статус_Заказа" FromRole="Статус_Заказа" ToRole="Заказ" />
+        </EntityType>
+        <EntityType Name="Статус_Услуги">
+          <Key>
+            <PropertyRef Name="Код_статуса_услуги" />
+          </Key>
+          <Property Name="Код_статуса_услуги" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование_статуса_услуги" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Состояние_услуги" Relationship="Self.FK_StatusServices_Статус_Услуги" FromRole="Статус_Услуги" ToRole="Состояние_услуги" />
+        </EntityType>
+        <EntityType Name="Страховые_компании">
+          <Key>
+            <PropertyRef Name="Код_компании" />
+          </Key>
+          <Property Name="Код_компании" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название_компании" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ИНН" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Расчетный_счет" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="БИК" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Данные_пациентов" Relationship="Self.FK_Данные_пациентов_Данные_о_страховых_компаниях" FromRole="Страховые_компании" ToRole="Данные_пациентов" />
+        </EntityType>
+        <EntityType Name="Тип_полиса">
+          <Key>
+            <PropertyRef Name="Код_полиса" />
+          </Key>
+          <Property Name="Код_полиса" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Данные_пациентов" Relationship="Self.FK_Данные_пациентов_TypePolis" FromRole="Тип_полиса" ToRole="Данные_пациентов" />
+        </EntityType>
+        <EntityType Name="Услуги_Пользователя">
+          <Key>
+            <PropertyRef Name="Код_услуг_сотрудника" />
+          </Key>
+          <Property Name="Код_услуг_сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Код_сотрудника" Type="Int32" />
+          <Property Name="Код_услуги" Type="Int32" />
+          <NavigationProperty Name="Сотрудники" Relationship="Self.FK_Услуги_Пользова_users" FromRole="Услуги_Пользователя" ToRole="Сотрудники" />
+          <NavigationProperty Name="Услуги" Relationship="bazdanModel.FK_Услуги_Пользова_services" FromRole="Услуги_Пользователя" ToRole="Услуги" />
+        </EntityType>
+        <Association Name="FK_Заказ_Biomaterials">
+          <End Role="Биоматериалы" Type="Self.Биоматериалы" Multiplicity="0..1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Биоматериалы">
+              <PropertyRef Name="Код_биоматериала" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="Код_биоматериала" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Данные_пациентов_TypePolis">
+          <End Role="Тип_полиса" Type="Self.Тип_полиса" Multiplicity="0..1" />
+          <End Role="Данные_пациентов" Type="Self.Данные_пациентов" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тип_полиса">
+              <PropertyRef Name="Код_полиса" />
+            </Principal>
+            <Dependent Role="Данные_пациентов">
+              <PropertyRef Name="Тип_полиса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Данные_пациентов_Данные_о_страховых_компаниях">
+          <End Role="Страховые_компании" Type="Self.Страховые_компании" Multiplicity="0..1" />
+          <End Role="Данные_пациентов" Type="Self.Данные_пациентов" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Страховые_компании">
+              <PropertyRef Name="Код_компании" />
+            </Principal>
+            <Dependent Role="Данные_пациентов">
+              <PropertyRef Name="Страховая_компания" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusServices_Заказ">
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="0..1" />
+          <End Role="Состояние_услуги" Type="Self.Состояние_услуги" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Заказ">
+              <PropertyRef Name="Код_заказа" />
+            </Principal>
+            <Dependent Role="Состояние_услуги">
+              <PropertyRef Name="Код_заказа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заказ_Статус_Заказа">
+          <End Role="Статус_Заказа" Type="Self.Статус_Заказа" Multiplicity="0..1" />
+          <End Role="Заказ" Type="Self.Заказ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Статус_Заказа">
+              <PropertyRef Name="Код_статуса_заказа" />
+            </Principal>
+            <Dependent Role="Заказ">
+              <PropertyRef Name="Статус_заказа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_Тип_пользователя">
+          <End Role="Роль_пользователя" Type="Self.Роль_пользователя" Multiplicity="0..1" />
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Роль_пользователя">
+              <PropertyRef Name="Код_роли" />
+            </Principal>
+            <Dependent Role="Сотрудники">
+              <PropertyRef Name="Роль_сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusServices_Статус_Услуги">
+          <End Role="Статус_Услуги" Type="Self.Статус_Услуги" Multiplicity="0..1" />
+          <End Role="Состояние_услуги" Type="Self.Состояние_услуги" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Статус_Услуги">
+              <PropertyRef Name="Код_статуса_услуги" />
+            </Principal>
+            <Dependent Role="Состояние_услуги">
+              <PropertyRef Name="Статус" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Услуги_Пользова_users">
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="0..1" />
+          <End Role="Услуги_Пользователя" Type="Self.Услуги_Пользователя" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудники">
+              <PropertyRef Name="Код_сотрудника" />
+            </Principal>
+            <Dependent Role="Услуги_Пользователя">
+              <PropertyRef Name="Код_сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bazdanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Администратор" EntityType="Self.Администратор" />
+          <EntitySet Name="Биоматериалы" EntityType="Self.Биоматериалы" />
+          <EntitySet Name="Данные_пациентов" EntityType="Self.Данные_пациентов" />
+          <EntitySet Name="Заказ" EntityType="Self.Заказ" />
+          <EntitySet Name="История" EntityType="Self.История" />
+          <EntitySet Name="Приборы" EntityType="Self.Приборы" />
+          <EntitySet Name="Работа_анализатора" EntityType="Self.Работа_анализатора" />
+          <EntitySet Name="Роль_пользователя" EntityType="Self.Роль_пользователя" />
+          <EntitySet Name="Состояние_услуги" EntityType="Self.Состояние_услуги" />
+          <EntitySet Name="Сотрудники" EntityType="Self.Сотрудники" />
+          <EntitySet Name="Статус_Заказа" EntityType="Self.Статус_Заказа" />
+          <EntitySet Name="Статус_Услуги" EntityType="Self.Статус_Услуги" />
+          <EntitySet Name="Страховые_компании" EntityType="Self.Страховые_компании" />
+          <EntitySet Name="Тип_полиса" EntityType="Self.Тип_полиса" />
+          <EntitySet Name="Услуги_Пользователя" EntityType="Self.Услуги_Пользователя" />
+          <AssociationSet Name="FK_Заказ_Biomaterials" Association="Self.FK_Заказ_Biomaterials">
+            <End Role="Биоматериалы" EntitySet="Биоматериалы" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Данные_пациентов_TypePolis" Association="Self.FK_Данные_пациентов_TypePolis">
+            <End Role="Тип_полиса" EntitySet="Тип_полиса" />
+            <End Role="Данные_пациентов" EntitySet="Данные_пациентов" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Данные_пациентов_Данные_о_страховых_компаниях" Association="Self.FK_Данные_пациентов_Данные_о_страховых_компаниях">
+            <End Role="Страховые_компании" EntitySet="Страховые_компании" />
+            <End Role="Данные_пациентов" EntitySet="Данные_пациентов" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusServices_Заказ" Association="Self.FK_StatusServices_Заказ">
+            <End Role="Заказ" EntitySet="Заказ" />
+            <End Role="Состояние_услуги" EntitySet="Состояние_услуги" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заказ_Статус_Заказа" Association="Self.FK_Заказ_Статус_Заказа">
+            <End Role="Статус_Заказа" EntitySet="Статус_Заказа" />
+            <End Role="Заказ" EntitySet="Заказ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_Тип_пользователя" Association="Self.FK_users_Тип_пользователя">
+            <End Role="Роль_пользователя" EntitySet="Роль_пользователя" />
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusServices_Статус_Услуги" Association="Self.FK_StatusServices_Статус_Услуги">
+            <End Role="Статус_Услуги" EntitySet="Статус_Услуги" />
+            <End Role="Состояние_услуги" EntitySet="Состояние_услуги" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Услуги_Пользова_users" Association="Self.FK_Услуги_Пользова_users">
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+            <End Role="Услуги_Пользователя" EntitySet="Услуги_Пользователя" />
+          </AssociationSet>
+          <EntitySet Name="Услуги" EntityType="bazdanModel.Услуги" />
+          <AssociationSet Name="FK_services_Приборы" Association="bazdanModel.FK_services_Приборы">
+            <End Role="Приборы" EntitySet="Приборы" />
+            <End Role="Услуги" EntitySet="Услуги" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusServices_services" Association="bazdanModel.FK_StatusServices_services">
+            <End Role="Услуги" EntitySet="Услуги" />
+            <End Role="Состояние_услуги" EntitySet="Состояние_услуги" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Услуги_Пользова_services" Association="bazdanModel.FK_Услуги_Пользова_services">
+            <End Role="Услуги" EntitySet="Услуги" />
+            <End Role="Услуги_Пользователя" EntitySet="Услуги_Пользователя" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Услуги">
+          <Key>
+            <PropertyRef Name="Код_услуги" />
+          </Key>
+          <Property Name="Код_услуги" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Номер_услуги" Type="Int32" />
+          <Property Name="Наименование_услуги" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Стоимость_услуги" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Время_выполнения" Type="Int32" />
+          <Property Name="Среднее_отклонение" Type="Int32" />
+          <Property Name="Анализатор" Type="Int32" />
+          <Property Name="result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Приборы" Relationship="bazdanModel.FK_services_Приборы" FromRole="Услуги" ToRole="Приборы" />
+          <NavigationProperty Name="Состояние_услуги" Relationship="bazdanModel.FK_StatusServices_services" FromRole="Услуги" ToRole="Состояние_услуги" />
+          <NavigationProperty Name="Услуги_Пользователя" Relationship="bazdanModel.FK_Услуги_Пользова_services" FromRole="Услуги" ToRole="Услуги_Пользователя" />
+        </EntityType>
+        <Association Name="FK_services_Приборы">
+          <End Type="bazdanModel.Приборы" Role="Приборы" Multiplicity="0..1" />
+          <End Type="bazdanModel.Услуги" Role="Услуги" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Приборы">
+              <PropertyRef Name="Код_прибора" />
+            </Principal>
+            <Dependent Role="Услуги">
+              <PropertyRef Name="Анализатор" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusServices_services">
+          <End Type="bazdanModel.Услуги" Role="Услуги" Multiplicity="0..1" />
+          <End Type="bazdanModel.Состояние_услуги" Role="Состояние_услуги" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Услуги">
+              <PropertyRef Name="Код_услуги" />
+            </Principal>
+            <Dependent Role="Состояние_услуги">
+              <PropertyRef Name="Код_услуги" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Услуги_Пользова_services">
+          <End Type="bazdanModel.Услуги" Role="Услуги" Multiplicity="0..1" />
+          <End Type="bazdanModel.Услуги_Пользователя" Role="Услуги_Пользователя" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Услуги">
+              <PropertyRef Name="Код_услуги" />
+            </Principal>
+            <Dependent Role="Услуги_Пользователя">
+              <PropertyRef Name="Код_услуги" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище bazdanModelContainer" CdmEntityContainer="bazdanEntities">
+          <EntitySetMapping Name="Администратор">
+            <EntityTypeMapping TypeName="bazdanModel.Администратор">
+              <MappingFragment StoreEntitySet="Администратор">
+                <ScalarProperty Name="Код_администратора" ColumnName="Код_администратора" />
+                <ScalarProperty Name="Логин" ColumnName="Логин" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Биоматериалы">
+            <EntityTypeMapping TypeName="bazdanModel.Биоматериалы">
+              <MappingFragment StoreEntitySet="Биоматериалы">
+                <ScalarProperty Name="Код_биоматериала" ColumnName="Код_биоматериала" />
+                <ScalarProperty Name="Номер_биоматериала" ColumnName="Номер_биоматериала" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Данные_пациентов">
+            <EntityTypeMapping TypeName="bazdanModel.Данные_пациентов">
+              <MappingFragment StoreEntitySet="Данные_пациентов">
+                <ScalarProperty Name="Код_пациента" ColumnName="Код_пациента" />
+                <ScalarProperty Name="ФИО_пациента" ColumnName="ФИО_пациента" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+                <ScalarProperty Name="Серия_паспорта" ColumnName="Серия_паспорта" />
+                <ScalarProperty Name="Номер_паспорта" ColumnName="Номер_паспорта" />
+                <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
+                <ScalarProperty Name="Номер_полиса" ColumnName="Номер_полиса" />
+                <ScalarProperty Name="Тип_полиса" ColumnName="Тип_полиса" />
+                <ScalarProperty Name="Страховая_компания" ColumnName="Страховая_компания" />
+                <ScalarProperty Name="Электронная_почта" ColumnName="Электронная_почта" />
+                <ScalarProperty Name="Логин" ColumnName="Логин" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Заказ">
+            <EntityTypeMapping TypeName="bazdanModel.Заказ">
+              <MappingFragment StoreEntitySet="Заказ">
+                <ScalarProperty Name="Код_заказа" ColumnName="Код_заказа" />
+                <ScalarProperty Name="Дата_создания" ColumnName="Дата_создания" />
+                <ScalarProperty Name="Статус_заказа" ColumnName="Статус_заказа" />
+                <ScalarProperty Name="Время_выполнения_заказа" ColumnName="Время_выполнения_заказа" />
+                <ScalarProperty Name="Код_биоматериала" ColumnName="Код_биоматериала" />
+                <ScalarProperty Name="Код_пациента" ColumnName="Код_пациента" />
+                <ScalarProperty Name="result" ColumnName="result" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="История">
+            <EntityTypeMapping TypeName="bazdanModel.История">
+              <MappingFragment StoreEntitySet="История">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="enter_status" ColumnName="enter_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Приборы">
+            <EntityTypeMapping TypeName="bazdanModel.Приборы">
+              <MappingFragment StoreEntitySet="Приборы">
+                <ScalarProperty Name="Код_прибора" ColumnName="Код_прибора" />
+                <ScalarProperty Name="Наименование_прибора" ColumnName="Наименование_прибора" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Работа_анализатора">
+            <EntityTypeMapping TypeName="bazdanModel.Работа_анализатора">
+              <MappingFragment StoreEntitySet="Работа_анализатора">
+                <ScalarProperty Name="Код_работы_анализатора" ColumnName="Код_работы_анализатора" />
+                <ScalarProperty Name="Дата_поступления" ColumnName="Дата_поступления" />
+                <ScalarProperty Name="Дата_выполнения" ColumnName="Дата_выполнения" />
+                <ScalarProperty Name="Время_выполнения" ColumnName="Время_выполнения" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Роль_пользователя">
+            <EntityTypeMapping TypeName="bazdanModel.Роль_пользователя">
+              <MappingFragment StoreEntitySet="Роль_пользователя">
+                <ScalarProperty Name="Код_роли" ColumnName="Код_роли" />
+                <ScalarProperty Name="Наименование_роли" ColumnName="Наименование_роли" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Состояние_услуги">
+            <EntityTypeMapping TypeName="bazdanModel.Состояние_услуги">
+              <MappingFragment StoreEntitySet="Состояние_услуги">
+                <ScalarProperty Name="Код_состояния_услуги" ColumnName="Код_состояния_услуги" />
+                <ScalarProperty Name="Код_заказа" ColumnName="Код_заказа" />
+                <ScalarProperty Name="Код_услуги" ColumnName="Код_услуги" />
+                <ScalarProperty Name="Статус" ColumnName="Статус" />
+                <ScalarProperty Name="Результат" ColumnName="Результат" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сотрудники">
+            <EntityTypeMapping TypeName="bazdanModel.Сотрудники">
+              <MappingFragment StoreEntitySet="Сотрудники">
+                <ScalarProperty Name="Код_сотрудника" ColumnName="Код_сотрудника" />
+                <ScalarProperty Name="ФИО_сотрудника" ColumnName="ФИО_сотрудника" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Номер" ColumnName="Номер" />
+                <ScalarProperty Name="Логин" ColumnName="Логин" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="Последний_вход" ColumnName="Последний_вход" />
+                <ScalarProperty Name="Услуги_сотрудника" ColumnName="Услуги_сотрудника" />
+                <ScalarProperty Name="Роль_сотрудника" ColumnName="Роль_сотрудника" />
+                <ScalarProperty Name="Вход" ColumnName="Вход" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Статус_Заказа">
+            <EntityTypeMapping TypeName="bazdanModel.Статус_Заказа">
+              <MappingFragment StoreEntitySet="Статус_Заказа">
+                <ScalarProperty Name="Код_статуса_заказа" ColumnName="Код_статуса_заказа" />
+                <ScalarProperty Name="Наименование_статуса_заказа" ColumnName="Наименование_статуса_заказа" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Статус_Услуги">
+            <EntityTypeMapping TypeName="bazdanModel.Статус_Услуги">
+              <MappingFragment StoreEntitySet="Статус_Услуги">
+                <ScalarProperty Name="Код_статуса_услуги" ColumnName="Код_статуса_услуги" />
+                <ScalarProperty Name="Наименование_статуса_услуги" ColumnName="Наименование_статуса_услуги" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Страховые_компании">
+            <EntityTypeMapping TypeName="bazdanModel.Страховые_компании">
+              <MappingFragment StoreEntitySet="Страховые_компании">
+                <ScalarProperty Name="Код_компании" ColumnName="Код_компании" />
+                <ScalarProperty Name="Название_компании" ColumnName="Название_компании" />
+                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+                <ScalarProperty Name="ИНН" ColumnName="ИНН" />
+                <ScalarProperty Name="Расчетный_счет" ColumnName="Расчетный_счет" />
+                <ScalarProperty Name="БИК" ColumnName="БИК" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Тип_полиса">
+            <EntityTypeMapping TypeName="bazdanModel.Тип_полиса">
+              <MappingFragment StoreEntitySet="Тип_полиса">
+                <ScalarProperty Name="Код_полиса" ColumnName="Код_полиса" />
+                <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Услуги_Пользователя">
+            <EntityTypeMapping TypeName="bazdanModel.Услуги_Пользователя">
+              <MappingFragment StoreEntitySet="Услуги_Пользователя">
+                <ScalarProperty Name="Код_услуг_сотрудника" ColumnName="Код_услуг_сотрудника" />
+                <ScalarProperty Name="Код_сотрудника" ColumnName="Код_сотрудника" />
+                <ScalarProperty Name="Код_услуги" ColumnName="Код_услуги" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Услуги">
+            <EntityTypeMapping TypeName="bazdanModel.Услуги">
+              <MappingFragment StoreEntitySet="Услуги">
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="Анализатор" ColumnName="Анализатор" />
+                <ScalarProperty Name="Среднее_отклонение" ColumnName="Среднее_отклонение" />
+                <ScalarProperty Name="Время_выполнения" ColumnName="Время_выполнения" />
+                <ScalarProperty Name="Стоимость_услуги" ColumnName="Стоимость_услуги" />
+                <ScalarProperty Name="Наименование_услуги" ColumnName="Наименование_услуги" />
+                <ScalarProperty Name="Номер_услуги" ColumnName="Номер_услуги" />
+                <ScalarProperty Name="Код_услуги" ColumnName="Код_услуги" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

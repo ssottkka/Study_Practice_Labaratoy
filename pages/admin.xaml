@@ -1,0 +1,47 @@
+﻿<Window x:Class="task1.pages.admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:task1.pages"
+        mc:Ignorable="d"
+        Title="admin" Height="700" Width="902"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F0F0">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая панель с изображением и кнопками -->
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10">
+            <Image Source="User_Photos/Администратор.png" Width="100" Height="100" Stretch="UniformToFill"/>
+            <Button FontFamily="Segoe UI" FontSize="14" Background="#F44336" Foreground="White" Content="Выйти" Click="Button_Click" Margin="0,10,0,0" Width="100" Height="30" BorderThickness="0"/>
+        </StackPanel>
+
+        <!-- Информация о администраторе -->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="10,10,0,10" HorizontalAlignment="Left" Width="124">
+            <Label FontFamily="Segoe UI" FontSize="14" Content="Имя пользователя:" FontWeight="Bold"/>
+            <Label FontFamily="Segoe UI" FontSize="14" x:Name="adminFIO" Content=""/>
+            <Label FontFamily="Segoe UI" FontSize="14" Content="Должность:" FontWeight="Bold"/>
+            <Label FontFamily="Segoe UI" FontSize="14" x:Name="adminType" Content=""/>
+            <Image Source="User_Photos/logo.png" Width="83" Height="74"/>
+        </StackPanel>
+
+        <!-- Основная панель с DataGrid и кнопками -->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin="10,0,20,0" VerticalAlignment="Top">
+            <DataGrid FontFamily="Segoe UI" FontSize="14" Background="#FFFFFF" x:Name="historyDataGrid" Height="300" Width="754" SelectionChanged="HistoryList_SelectionChanged" BorderThickness="1" BorderBrush="#CCCCCC"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Button FontFamily="Segoe UI" FontSize="14" Background="#4CAF50" Foreground="White" x:Name="showHistory" Content="По логину" Click="showHistory_Click" Width="100" Height="30" Margin="5,0,5,0" BorderThickness="0"/>
+                <Button FontFamily="Segoe UI" FontSize="14" Background="#4CAF50" Foreground="White" x:Name="dateSort" Content="По дате" Click="dateSort_Click" Width="100" Height="30" Margin="5,0,5,0" BorderThickness="0"/>
+                <Button FontFamily="Segoe UI" FontSize="14" Background="#4CAF50" Foreground="White" x:Name="btnAddNewEmployee" Content="Добавить сотрудника" Click="btnAddNewEmployee_Click" Width="150" Height="30" Margin="5,0,5,0" BorderThickness="0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
